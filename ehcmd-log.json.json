@@ -1,0 +1,34 @@
+{
+    
+    "eqlogic_ehcmd_log" : {
+        "title": "EQLogic VMware CIM Log",
+        "description": "The ehcmd.log file found at /var/log/eqlogic in a support bundle",
+        "url": "",
+        "regex": {
+            "std": {
+		        "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})Z (?<level>\\w{1}) EHCMD (?<method>\\w+):(?<method_id>\\d+) (?<body>.*)"
+            }
+        },
+        "level-field": "level",
+        "level": {
+            "error" : "(?:E|error|eror|e)",
+            "warning" : "W",
+            "info" : "I"
+        },
+        "value": {
+            "method": {
+                "kind": "string",
+                "identifier": true
+            },
+            "method_id": {
+                "kind": "integer",
+                "identifier": true
+            }
+        },
+        "sample": [
+            {
+                "line" : "2015-06-01T02:27:27Z E EHCMD stack:134 /usr/lib/cim/libdellprovider.so(_ZN13StackConsumerC1ERSt6vectorISsSaISsEE+0x39) [0x1e5ada5b]"
+            }
+        ]
+    }
+}

@@ -1,0 +1,36 @@
+{
+    
+    "vmkernel_log_sub" : {
+        "title": "VMKernel Logs + subsystem highlighting",
+        "description": "The VMKernel's log format with subsystem highlighting included",
+        "url": "",
+        "regex": {
+            "std": {
+		"pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<cpu>cpu\\d+):(?<world_id>\\d+)\\)((?:(?<level>WARNING|ALERT)|(?<subsystem>[a-zA-Z0-9_\\<\\>]+)): )?(?<body>.*)"
+            }
+        },
+        "level-field": "level",
+        "level": {
+            "warning": "(?:WARNING|ALERT)"
+        },
+        "value": {
+            "cpu": {
+                "kind": "integer",
+                "identifier": true
+            },
+            "world_id": {
+                "kind": "integer",
+                "identifier": true
+            },
+	    "subsystem": {
+		"kind": "string",
+		"identifier": true
+	    }
+        },
+        "sample": [
+            {
+                "line": "2015-04-16T20:54:12.732Z cpu34:16418)ScsiDeviceIO: 2358: Cmd(0x412445fee880) 0x28, CmdSN 0x38 from world 18150 to dev naa.600a098038303237623f464573303230 failed H:0x7 D:0x0 P:0x0 Possible sense data: 0x0 0x0 0x0."
+            }
+        ]
+    }
+}

@@ -1,0 +1,38 @@
+{
+
+    "vm_syslog_log" : {
+        "title" : "vmware syslog",
+        "description" : "vmware's syslog format",
+        "url" : "",
+        "regex" : {
+            "std" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<system>[a-zA-Z0-9-_\\[\\]]+): (?<subsystem>[a-zA-Z0-9 _-]+):? (?<method>[a-zA-Z0-9 -_]+):? (?<body>.*)$"
+            }
+        },
+        "level-field" : "body",
+        "level" : {
+            "warning" : "(?:warn|WARN)",
+            "error" : "(?:FAIL|fail|error|ERROR)",
+            "info" : "(?:info|INFO|notice|NOTICE)"
+        },
+        "value" : {
+            "system" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "subsystem" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "method" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2015-06-08T23:58:35Z iscsid: Notice: Reclaimed Channel (H43 T58 C0 oid=3b)"
+            }
+        ]
+    }
+}

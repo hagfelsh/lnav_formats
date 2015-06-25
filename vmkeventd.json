@@ -1,0 +1,42 @@
+{
+    
+    "vmkeventd_log" : {
+        "title" : "vmware vmkeventd",
+        "description" : "vmware's vmkeventd log format",
+        "url" : "",
+        "regex" : {
+            "std" : {
+		        "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<processname>\\w+)\\[(?<psid>\\d+)\\]: (?<level>\\w{1})(?<errornumber>\\d+): (?:(?<messagetype>\\w+):|(?<body>.*))$"
+            }
+        },
+        "level-field" : "level",
+        "level" : {
+            "warning" : "W",
+            "error" : "E",
+            "info" : "I"
+        },
+        "value" : {
+            "processname" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "psid" : {
+                "kind" : "integer",
+                "identifier" : true
+            },
+            "errornumber" : {
+                "kind" : "integer",
+                "identifier" : true
+            },
+            "messagetype" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2015-02-05T15:00:28Z vmkeventd[33449]: I120: Could not expand environment variable HOME."    
+            }
+        ]
+    }
+}

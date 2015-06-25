@@ -1,0 +1,37 @@
+{
+    "vmkdevmgr_log" : {
+        "title" : "VMWare VMKDevmanager Log",
+        "description" : "Log format used in /var/log/vmkdevmgr.log",
+        "url" : "",
+        "regex" : {
+            "non-level" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<system>vmkdevmgr): (?:(?<main>\\w+) \\[(?<level>\\w+)\\]:|(?<subsystem>\\w+):) (?<body>.*)$"
+            }
+        },
+        "level-field" : "body",
+        "level" : {
+            "error" : "error",
+            "warning" : "warning",
+            "info" : "info"
+        },
+        "value" : {
+            "system" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "subsystem" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "main" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2015-05-15T11:36:09Z vmkdevmgr: main [info]: ADD event for bus=pci addr=p0000:00:1f.2 id=80868d021028061b010601."
+            }
+        ]
+    }
+}

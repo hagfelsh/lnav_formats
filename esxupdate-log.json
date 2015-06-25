@@ -1,0 +1,34 @@
+{
+    "esxupdate_log" : {
+        "title" : "VMWare ESXUpdate Log",
+        "description" : "Log format used in /var/log/esxupdate.log",
+        "url" : "",
+        "regex" : {
+            "non-level" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<system>\\w+): (?<subsystem>[a-zA-Z0-9\\.]+): (?<level>[A-Z]+): (?<body>.*)$"
+            }
+        },
+        "level-field" : "level",
+        "level" : {
+            "error" : "ERROR",
+            "warning" : "WARNING",
+            "info" : "INFO",
+            "debug" : "DEBUG"
+        },
+        "value" : {
+            "system" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "subsystem" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2015-05-15T11:38:26Z esxupdate: root: INFO: Command = profile.setacceptance"
+            }
+        ]
+    }
+}

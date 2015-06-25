@@ -1,0 +1,42 @@
+{
+
+    "vmauthd_log" : {
+        "title" : "vmware vmauthd",
+        "description" : "vmware's vmauthd log format",
+        "url" : "",
+        "regex" : {
+            "std" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<system>\\w+)\\[(?<psid>\\d+)\\]: (?<subsystem>\\S+)\\| (?<level>\\w)(?<errornumber>\\d+): (?<body>.*)$"
+            }
+        },
+        "level-field" : "level",
+        "level" : {
+            "warning" : "W",
+            "error" : "E",
+            "info" : "I"
+        },
+        "value" : {
+            "system" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "psid" : {
+                "kind" : "integer",
+                "identifier" : true
+            },
+            "subsystem" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "errornumber" : {
+                "kind" : "integer",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2015-05-13T14:07:56Z vmauthd[22040702]: vthread-3| I120: PREF Failed to load user preferences."
+            }
+        ]
+    }
+}
