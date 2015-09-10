@@ -1,0 +1,29 @@
+{
+    "XenCenter_log" : {
+        "title": "xen center log",
+        "description": "XenCenter.log format",
+        "url": "",
+        "regex": {
+            "std": {
+        "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) (?<level>\\w+)\\s+(?<method>[a-zA-Z0-9\\.]+) \\[(?<targetobject>[a-zA-Z0-9\\s]+)\\] \\- (?<body>.*)"
+            }
+        },
+        "level-field": "level",
+        "level": {
+            "warning"   : "WARN",
+            "debug"     : "DEBUG",
+            "info"      : "INFO",
+            "error"     : "ERROR"            
+        },
+        "value": {
+                    "targetobject": { "kind": "string", "identifier": true },           
+                    "method":       { "kind": "string", "identifier": true }
+        },
+        
+        "sample": [
+            {
+                "line" : "2015-09-09 12:42:32,706 DEBUG XenAdmin.Actions.GUIActions.MeddlingAction [2360] - Updating task OpaqueRef:83f91110-aca6-b4f7-4454-c926d4e86a21 : 09/09/2015 17:42:20 - 09/09/2015 17:42:32"
+            }
+        ]
+    }
+}
