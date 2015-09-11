@@ -1,19 +1,18 @@
 {
-
-    "vmware_log" : {
+    "vmware_guest_log" : {
         "title" : "esx vmware.log",
         "description" : "vmware's vmware.log format",
         "url" : "",
         "regex" : {
             "std" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z)\\| (?<processname>[0-9a-zA-Z\\-]+)\\| (?<level>\\w{1})(?<errornumber>\\d+): (?:(?<messagetype>[0-9a-zA-Z \\-\\:]+): |(?<body>.*))$"
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z)\\|\\s+(?<processname>[0-9a-zA-Z\\-\\#]+)\\|\\s+(?<level>\\w{1})(?<errornumber>\\d+)[+:]\\s+(?:(?<object>\\S+):\\s+|(?<body>.*))$"
+             },
+            "alt" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z)\\|\\s+(?<processname>[0-9a-zA-Z\\-\\#]+)\\|\\s+(?:(?<object>\\S+):\\s+|(?<body>.*))$"
             }
         },
         "level-field" : "level",
-        "level" : {
-            "warning" : "(?:degraded|stopped)",
-            "error" : "(?:from on|down)"
-        },
+        "level" : { "warning" : "(?:W|A)", "error" : "E" },
         "value" : {
             "processname" : {
                 "kind" : "string",
@@ -23,7 +22,7 @@
                 "kind" : "integer",
                 "identifier" : true
             },
-            "messagetype" : {
+            "object" : {
                 "kind" : "string",
                 "identifier" : true
             }
@@ -34,6 +33,9 @@
             },
             {
                 "line" : "2015-05-15T23:30:49.873Z| vcpu-0| I120: SVGA enabling SVGA"
+            },
+            {
+                "line" : "2015-09-10T14:12:00.982Z| vmx| NumVCPUs 8"
             }
         ]
     }

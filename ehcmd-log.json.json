@@ -7,6 +7,9 @@
         "regex": {
             "std": {
 		        "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})Z (?<level>\\w{1}) EHCMD (?<method>\\w+):(?<method_id>\\d+) (?<body>.*)"
+            },
+            "mem1.3": {
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2})Z (?<level>\\w{1}) EHCMD \\w+\\|(?<method>\\w+)\\|(?<method_id>\\d+)\\|(?<body>.*)"
             }
         },
         "level-field": "level",
@@ -28,6 +31,9 @@
         "sample": [
             {
                 "line" : "2015-06-01T02:27:27Z E EHCMD stack:134 /usr/lib/cim/libdellprovider.so(_ZN13StackConsumerC1ERSt6vectorISsSaISsEE+0x39) [0x1e5ada5b]"
+            },
+            {
+                "line" : "2015-07-16T23:17:24Z I EHCMD INFO|ReopenTraceFile|240|Log file reopened:"
             }
         ]
     }
