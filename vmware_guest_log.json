@@ -1,0 +1,36 @@
+{
+    "vmw_guestlog" : {
+        "title" : "esx vmware.log",
+        "description" : "vmware's vmware.log format that requires levels",
+        "url" : "",
+        "regex" : {
+            "std" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z)\\|\\s+(?<processname>[0-9a-zA-Z\\-\\#]+)\\|\\s+(?<level>\\w{1})(?<errornumber>\\d+)[+:]\\s+(?:(?<object>\\S+):\\s+|(?<body>.*))$"
+             }
+        },
+        "level-field" : "level",
+        "level" : { "warning" : "(?:W|A)", "error" : "E" },
+        "value" : {
+            "processname" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "errornumber" : {
+                "kind" : "integer",
+                "identifier" : true
+            },
+            "object" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },        
+        "sample" : [
+            {
+                "line" : "2015-05-15T23:30:38.045Z| vmx| I120: VLANCE: send cluster threshold is 80, size = 2 recalcInterval is 2 ticks"
+            },
+            {
+                "line" : "2015-05-15T23:30:49.873Z| vcpu-0| I120: SVGA enabling SVGA"
+            }
+        ]
+    }
+}
