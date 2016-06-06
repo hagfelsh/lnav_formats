@@ -1,0 +1,51 @@
+{
+    "vcenter_vpxa_log" : {
+        "title": "vCenter vpx agent log format",
+        "description": "Log format for the vpx agent on an ESXi host",
+        "url": "",
+        "regex": {
+            "std": {
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+) (?:opID=(?<operationid>[A-Za-z0-9@\\-]+))?\\] (?:\\[(?<function>\\w+)\\])?(?<body>.*)$"
+            }
+        },
+        "level-field": "level",
+        "opid-field" : "operationid",
+        "value": {
+            "processname": {
+                "kind": "string",
+                "identifier": true
+            },
+            "processid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "subsystem": {
+                "kind": "string",
+                "identifier": true
+            },
+            "originatorid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "operationid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "function" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample": [
+            /*{
+                "line" : "2016-05-31T19:10:09.901Z verbose vpxa[7F41BB70] [Originator@6876 sub=hostdstats] Set internal stats for VM: 179 (vpxa VM id), 5274 (vpxd VM id). Is FT primary? false"
+            },
+            {
+                "line" : "2016-05-31T19:10:09.901Z verbose vpxa[7E713B70] [Originator@6876 sub=PropertyProvider] [CommitChangesAndNotify] Updating cached values"
+            },*/
+            {
+                "line" : "2016-05-31T19:10:10.081Z verbose vpxa[7F41BB70] [Originator@6876 sub=vpxaVmomi opID=HB-host-425@47907-3f55ed0b-f8] [VpxaVmomi] SetStatusDone was called with syncGenNo (47907)"
+            }
+        ]
+    }
+}
