@@ -1,0 +1,30 @@
+{
+
+    "vm_auth_log" : {
+        "title" : "vmware auth log",
+        "description" : "vmware's auth log format",
+        "url" : "",
+        "regex" : {
+            "std" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<system>[a-zA-Z0-9-_\\[\\]]+)\\[(?<operationid>[\\d]+)\\]: (?<body>.*)$"
+            }
+        },
+        "level-field" : "body",
+        "opid-field" : "operationid",
+        "value" : {
+            "system" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "operationid" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2016-06-07T18:28:09Z sshd[7764855]: Received disconnect from 10.45.201.53: 11: disconnected by user"
+            }
+        ]
+    }
+}
