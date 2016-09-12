@@ -1,0 +1,51 @@
+{
+    "hostd_log" : {
+        "title" : "vmware hostd",
+        "description" : "vmware's hostd log format",
+        "url" : "",
+        "regex" : {
+            "std" : {
+                        "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) \\[(?<threaduid>[0-9A-F]+) (?<level>\\w+) \\'(?<processname>.+)(.+)?\\'\\](?<body>.*)$"
+            },
+            "6.0" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<threaduid>[A-F0-9]+)\\] \\[Originator@(?<originid>\\d+) sub=(?<subsystem>\\S+) opID=(?<opid>[a-f0-9]+) user=(?<user>\\S+)\\] (?<body>.*)$"
+            }
+        },
+        "level-field" : "level",
+        "opid-field" : "opid",
+        "value" : {
+            "threaduid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "processname": {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "originid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "subsystem" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "user" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "opid" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2015-11-19T10:48:09.776Z [2C840B70 verbose 'SoapAdapter'] Responded to service state request"
+            },
+            {
+                "line" : "2016-09-12T16:28:38.444Z info hostd[4EAE0B70] [Originator@6876 sub=VsanPluginMgr opID=7ee9b502 user=vpxuser] Disk cache is valid, no need to refresh."
+            }
+        ]
+    }
+}
