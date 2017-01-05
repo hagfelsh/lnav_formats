@@ -8,7 +8,7 @@
                 "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) \\[(?<threaduid>[0-9A-F]+) (?<level>\\w+) \\'(?<processname>.+)(.+)?\\'\\](?<body>.*)$"
             },
             "6.0" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<threaduid>[A-F0-9]+)\\] \\[Originator@(?<originid>\\d+) (?:sub=(?<subsystem>[a-z-A-Z0-9\\-\\.\\_]+)( opID=(?<opid>[a-fA-F0-9\\.\\-]+) user=(?<user>[\\w\\d]+))?|sub=(?<vmsub>.*))\\](?<body>.*)$"
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<threaduid>[A-F0-9]+)\\] \\[Originator@(?<originid>\\d+) (?:sub=(?<subsystem>[\\w\\d\\-\\.\\_\\(\\)]+)?|sub=(?<vmsub>[\\w\\d\\-\\.\\:]+)(?:(?<errmsg>.*)?(?<vmxpath>\\/vmfs\\/volumes\\/\\S+\\.vmx)| \\((?<migrationid>\\d+)\\))?)( opID=(?<opid>\\S+) user=(?<user>\\S+))?\\](\\s+)?(?<body>.*)$"
             }
         },
         "level-field" : "level",
@@ -44,6 +44,14 @@
                 "identifier" : true
             },
             "vmsub" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "vmxpath" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "migrationid" : {
                 "kind" : "string",
                 "identifier" : true
             }
