@@ -5,14 +5,19 @@
         "url" : "",
         "regex" : {
             "std" : {
-                        "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) \\[(?<threaduid>[0-9A-F]+) (?<level>\\w+) \\'(?<processname>.+)(.+)?\\'\\](?<body>.*)$"
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) \\[(?<threaduid>[0-9A-F]+) (?<level>\\w+) \\'(?<processname>.+)(.+)?\\'\\](?<body>.*)$"
             },
             "6.0" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<threaduid>[A-F0-9]+)\\] \\[Originator@(?<originid>\\d+) sub=(?<subsystem>\\S+) opID=(?<opid>[a-f0-9]+) user=(?<user>\\S+)\\] (?<body>.*)$"
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<threaduid>[A-F0-9]+)\\] \\[Originator@(?<originid>\\d+) (?:sub=(?<subsystem>[a-z-A-Z0-9\\-\\.\\_]+)( opID=(?<opid>[a-fA-F0-9\\.\\-]+) user=(?<user>[\\w\\d]+))?|sub=(?<vmsub>.*))\\](?<body>.*)$"
             }
         },
         "level-field" : "level",
-        "opid-field" : "opid",
+        "level" : {
+            "warning" : "warning",
+            "error" : "error",
+            "info" : "info",
+            "debug" : "verbose"
+        },
         "value" : {
             "threaduid" : {
                 "kind" : "string",
@@ -35,6 +40,10 @@
                 "identifier" : true
             },
             "opid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "vmsub" : {
                 "kind" : "string",
                 "identifier" : true
             }
