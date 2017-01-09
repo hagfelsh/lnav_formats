@@ -5,7 +5,7 @@
         "url": "",
         "regex": {
             "std": {
-                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+) (?:opID=(?<operationid>[A-Za-z0-9@\\-]+))?\\] (?:\\[(?<function>\\w+)::(?<method>\\w+)\\])?(?<body>.*)$"
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+)(\\s+)?(?:opID=(?<operationid>[A-Za-z0-9@\\-]+))?\\] (?:\\[(?<function>\\w+)::(?<method>\\w+)\\])?(?<body>.*)$"
             }
         },
         "level-field": "level",
@@ -40,9 +40,12 @@
             }
         },
         "sample": [
-        {
-            "line" : "2016-10-07T15:28:42.117Z verbose fdm[2A8ABB70] [Originator@6876 sub=Invt opID=SendFdmUpdates-928cbb6-cf-SWI-344da819] [InventoryManagerImpl::ProcessVmCompatMatrixChange] Removed 0 hosts from the compatibility matrix."
-        }
+            {
+                "line" : "2016-10-07T15:28:42.117Z verbose fdm[2A8ABB70] [Originator@6876 sub=Invt opID=SendFdmUpdates-928cbb6-cf-SWI-344da819] [InventoryManagerImpl::ProcessVmCompatMatrixChange] Removed 0 hosts from the compatibility matrix."
+            },
+            {
+                "line" : "2017-01-04T15:58:07.084Z verbose fdm[FFD3AB70] [Originator@6876 sub=Cluster] ICMP data length 56 smaller than sizeof(ClusterPingData) 64"
+            }
         ]
     }
 }
