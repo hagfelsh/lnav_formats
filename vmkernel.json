@@ -1,35 +1,50 @@
 {
-    
+
     "vmkernel_log_sub" : {
         "title": "VMKernel Logs + subsystem highlighting",
         "description": "The VMKernel's log format with subsystem highlighting included",
         "url": "",
         "regex": {
             "std": {
-		"pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<cpu>cpu\\d+):(?<world_id>\\d+)\\)((?:(?<level>WARNING|ALERT)|(?<subsystem>[a-zA-Z0-9_\\<\\>]+)): )?(?<body>.*)"
+                "pattern": "^(?:VMB:|(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<cpu>cpu\\d+):(?<world_id>\\d+)( opID=(?<opid>[a-f0-9]+))?\\)((?:(?<level>WARNING|ALERT):|(?<subsystem>[:a-zA-Z0-9_\\<\\>\\.]+)))) ((?<function>\\S+))?(?<body>.*)"
             }
         },
         "level-field": "level",
+        "opid-field": "opid",
         "level": {
             "warning": "(?:WARNING|ALERT)"
         },
         "value": {
             "cpu": {
-                "kind": "integer",
+                "kind": "string",
                 "identifier": true
             },
             "world_id": {
-                "kind": "integer",
+                "kind": "string",
+                "identifier": false
+            },
+                "subsystem": {
+                "kind": "string",
                 "identifier": true
             },
-	    "subsystem": {
-		"kind": "string",
-		"identifier": true
-	    }
+            "function" : {
+                "kind" : "string",
+                "identifier" : false
+            },
+            "opid" : {
+                "kind" : "string",
+                "identifier" : true
+            }
         },
         "sample": [
             {
-                "line": "2015-04-16T20:54:12.732Z cpu34:16418)ScsiDeviceIO: 2358: Cmd(0x412445fee880) 0x28, CmdSN 0x38 from world 18150 to dev naa.600a098038303237623f464573303230 failed H:0x7 D:0x0 P:0x0 Possible sense data: 0x0 0x0 0x0."
+                "line": "2015-08-19T01:14:49.354Z cpu12:35043)etherswitch: ESVsiGetParamPortCfg:424: : not found"
+            },
+            {
+                "line" : "2017-01-08T21:37:56.787Z cpu25:213633)bnx2i:vmhba34:0000:05:00.3: bnx2i_indicate_async_mesg:3080 indicating async message on cid 45"
+            },
+            {
+                "line" : "2017-01-08T00:04:19.598Z cpu4:35586 opID=39afd4b2)World: 15544: VC opID 5f249531 maps to vmkernel opID 39afd4b2"
             }
         ]
     }
