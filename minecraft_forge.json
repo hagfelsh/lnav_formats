@@ -1,0 +1,39 @@
+{
+    "minecraft_forge_log" : {
+        "title" : "minecraft",
+        "description" : "The log format used in minecraft forge server logs",
+        "url" : "",
+        "regex" : {
+            "std" : {
+                "pattern" : "^\\[(?<timestamp>\\d{2}:\\d{2}:\\d{2})\\] \\[(?<system>.*)\\/(?<level>\\w+)\\] \\[(?<module>.*)\\/((?<childmod>.+))?\\]: (?<body>.*)$"
+            }
+        },
+        "level-field" : "level",
+                "level" : {
+                        "error" : "ERROR",
+                        "warning" : "WARN",
+                        "info" : "INFO",
+                        "debug" : "DEBUG",
+                        "trace" : "TRACE"
+                },
+        "value" : {
+            "system" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "module" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "childmod" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" :  "[14:57:56] [Server thread/TRACE] [RTG/RTG]: Sent event FMLPostInitializationEvent to mod RTG"
+            }
+        ]
+    }
+}
