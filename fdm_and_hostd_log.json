@@ -1,15 +1,21 @@
 {
-    "fdm_log" : {
-        "title": "ESXi FDM log format",
-        "description": "Log format for the ESXi Fault Domain Manager",
+    "fdm-and-hostd_log" : {
+        "title": "ESXi FDM and hostd log format",
+        "description": "Log format for the ESXi Fault Domain Manager and host daemon process",
         "url": "",
         "regex": {
             "std": {
-                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+)(\\s+)?(?:opID=(?<operationid>[A-Za-z0-9@\\-]+))?\\] (?:\\[(?<function>\\w+)::(?<method>\\w+)\\])?(?<body>.*)$"
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+)(\\s+)?(?:opID=(?<operationid>[A-Za-z0-9@\\-]+))?( user=(?<username>\\S+))?\\] (?:\\[(?<function>\\w+)::(?<method>\\w+)\\])?(?<body>.*)$"
             }
         },
         "opid-field" : "operationid",
         "level-field": "level",
+        "level" : {
+            "info" : "info",
+            "warning" : "warn",
+            "error" : "error",
+            "debug" : "debug"
+            },
         "value": {
             "processname": {
                 "kind": "string",
@@ -36,6 +42,10 @@
                 "identifier" : true
             },
             "method" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "username" : {
                 "kind" : "string",
                 "identifier" : true
             }
