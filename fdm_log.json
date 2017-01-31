@@ -1,7 +1,7 @@
 {
-    "fdm-and-hostd_log" : {
-        "title": "ESXi FDM and hostd log format",
-        "description": "Log format for the ESXi Fault Domain Manager and host daemon process",
+    "fdm_log" : {
+        "title": "ESXi FDM log format",
+        "description": "Log format for the ESXi Fault Domain Manager",
         "url": "",
         "regex": {
             "std": {
