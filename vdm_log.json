@@ -5,7 +5,7 @@
         "url" : "",
         "regex" : {
             "std" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3})-\\d+:\\d+ (?<level>\\w+)\\s+\\((?<opid>[A-F0-9\\-]+)\\)\\s+<(?:(?<operation>[\\w\\d\\s\\-\\_\\(\\)]+)|(?<guestoperation>[\\w\\d\\s\\-\\_\\(\\)]+)-(?<guestpath>\\/[\\/\\w\\d\\s\\-\\_\\(\\)]+))>\\s+\\[(?<function>\\S+)\\]\\s+(?<body>.*)$"
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3})-\\d+:\\d+ (?<level>\\w+)\\s+\\((?<opid>[A-F0-9\\-]+)\\)\\s+<(?:(?<operation>[\\.\\w\\d\\s\\-\\_\\(\\)]+)|(?<guestoperation>[\\.\\w\\d\\s\\-\\_\\(\\)]+)-(?<guestpath>\\/[\\/\\w\\d\\s\\-\\_\\(\\)]+))>\\s+\\[(?<function>\\S+)\\]\\s+(?<body>.*)$"
             }
         },
         "level-field" : "level",
