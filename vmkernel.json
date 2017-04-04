@@ -6,7 +6,7 @@
         "url": "",
         "regex": {
             "std": {
-                "pattern": "^(?:VMB:|(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<cpu>cpu\\d+):(?<world_id>\\d+)( opID=(?<opid>[a-f0-9]+))?\\)((?:(?<level>WARNING|ALERT):|(?<subsystem>[:a-zA-Z0-9_\\<\\>\\.]+)))) ((?<function>\\S+))?(?<body>.*)"
+                "pattern": "^(?:VMB:|(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<cpu>cpu\\d+):(?<world_id>\\d+)( opID=(?<opid>[a-f0-9]+))?\\)((?:(?<level>WARNING|ALERT):|(?<subsystem>[\\-:a-zA-Z0-9_\\<\\>\\.]+)))) ((?<function>\\S+))?(?<body>.*)"
             }
         },
         "level-field": "level",
