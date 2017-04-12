@@ -1,37 +1,36 @@
 {
 
-    "vm_syslog_log" : {
-        "title" : "vmware syslog",
-        "description" : "vmware's syslog format",
+    "vmksummary_log" : {
+        "title" : "vmware vmksummary",
+        "description" : "vmware's vmksummary log format",
         "url" : "",
         "regex" : {
             "std" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<system>[a-zA-Z0-9-_\\[\\]]+): (?<subsystem>[a-zA-Z0-9 _-]+):? (?<method>[a-zA-Z0-9 -_]+):? (?<body>.*)$"
+                        "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z) (?<eventtype>\\w+): \\w+ (?:(?<duration>\\d+d\\d+h\\d+m\\d+s), (?<vmcount>\\d+) VMs\\; |(?<body>.*))$"
             }
         },
         "level-field" : "body",
         "level" : {
-            "warning" : "(?:warn|WARN)",
-            "error" : "(?:FAIL|fail|error|ERROR)",
-            "info" : "(?:info|INFO|notice|NOTICE)"
+            "warning" : "off",
+            "error" : "down"
         },
         "value" : {
-            "system" : {
+            "eventtype" : {
                 "kind" : "string",
                 "identifier" : true
             },
-            "subsystem" : {
+            "duration" : {
                 "kind" : "string",
-                "identifier" : true
+                "identifier" : false
             },
-            "method" : {
-                "kind" : "string",
+            "vmcount" : {
+                "kind" : "integer",
                 "identifier" : true
             }
         },
         "sample" : [
             {
-                "line" : "2015-06-08T23:58:35Z iscsid: Notice: Reclaimed Channel (H43 T58 C0 oid=3b)"
+                "line" : "2015-02-06T10:00:02Z heartbeat: up 0d18h59m40s, 2 VMs; [[34046 hostd-worker 52600kB] [89781 vmx 2713128kB] [88449 vmx 5683884kB]] [[35698 sfcb-vmware_raw 7%max] [35413 sfcb-pycim 20%max] [35419 sfcb-vmware_bas 29%max]]"
             }
         ]
     }
