@@ -1,12 +1,11 @@
-{
-
+{    
     "vmkernel_log_sub" : {
         "title": "VMKernel Logs + subsystem highlighting",
         "description": "The VMKernel's log format with subsystem highlighting included",
         "url": "",
         "regex": {
             "std": {
-                "pattern": "^(?:VMB:|(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<cpu>cpu\\d+):(?<world_id>\\d+)( opID=(?<opid>[a-f0-9]+))?\\)((?:(?<level>WARNING|ALERT):|(?<subsystem>[\\-:a-zA-Z0-9_\\<\\>\\.]+)))) ((?<function>\\S+))?(?<body>.*)"
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<cpu>cpu\\d+):(?<world_id>\\d+)(?:( opID=(?<opid>[a-f\\d]+))?\\)(?:(?<address>0x[a-f\\d]+):\\[(?<address2>0x[a-f\\d]+)\\](?<instruction>\\S+)@((?<function>\\S+))?|(?<level>WARNING|ALERT):|(?<subsystem>[\\-:a-zA-Z0-9_\\<\\>\\.]+)))(\\s+)?(?<body>.*)$"
             }
         },
         "level-field": "level",
@@ -19,14 +18,30 @@
                 "kind": "string",
                 "identifier": true
             },
+            "address" : {
+                "kind" : "string",
+                "identifier" : false
+            },
+            "address2" : {
+                "kind" : "string",
+                "identifier" : false
+            },
+            "instruction" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "function" : {
+                "kind" : "string",
+                "identifier" : false 
+            },
             "world_id": {
                 "kind": "string",
                 "identifier": false
             },
-                "subsystem": {
-                "kind": "string",
-                "identifier": true
-            },
+	        "subsystem": {
+		        "kind": "string",
+		        "identifier": true
+	        },
             "function" : {
                 "kind" : "string",
                 "identifier" : false
@@ -45,7 +60,11 @@
             },
             {
                 "line" : "2017-01-08T00:04:19.598Z cpu4:35586 opID=39afd4b2)World: 15544: VC opID 5f249531 maps to vmkernel opID 39afd4b2"
+            },
+            {
+                "line" : "2017-05-01T16:20:51.349Z cpu22:35341)0x4123a835dab0:[0x41801caa4f74]TimerRecomputeInterrupt@vmkernel#nover+0xc8 stack: 0x4123a835daf0"
             }
         ]
     }
 }
+
