@@ -1,0 +1,36 @@
+{
+    "pacemaker_log" : {
+        "title" : "pacemaker log",
+        "description" : "Log format for pacemaker cluster management framework",
+        "url" : "",
+        "regex" : {
+            "std" : {
+                "pattern" : "^(?<timestamp>\\w{3}\\s+\\d{1,2} \\d{2}:\\d{2}:\\d{2}) \\[(?<pid>\\d+)\\] (?<hostname>\\S+)\\s+(?<procname>\\S+):\\s+(?<level>\\w+):\\s+((?<function>\\S+):)?\\s+(?<body>.*)$"
+            }
+        },
+        "level-field" : "level",
+        "value" : {
+            "hostname" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "pid" : {
+                "kind" : "integer",
+                "identifier" : true
+            },
+            "procname" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "function" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "Jul 19 13:44:21 [10089] mdstorbackup-b    pengine:     info: native_stop_constraints:  NFSDaemon_stop_0 is implicit after mdstorbackup-b is fenced"
+            }
+        ]
+    }
+}
