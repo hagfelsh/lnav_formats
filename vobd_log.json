@@ -1,12 +1,13 @@
 {
-    
+
     "vobd_log" : {
         "title" : "vmware vobd",
         "description" : "vmware's vobd log format",
         "url" : "",
         "regex" : {
             "std" : {
-		        "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z): \\[(?<subsystem>[0-9a-zA-Z]+)\\] (?<ussinceboot>\\d+)us: \\[(?<state>[0-9a-zA-Z.]+)\\] (?<body>.*)$"
+                /*"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z): \\[(?<subsystem>[0-9a-zA-Z]+)\\] (?<ussinceboot>\\d+)us: \\[(?<state>[0-9a-zA-Z.]+)\\] (?<body>.*)$" */
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z): (?:.*event \\((?<event>\\S+)\\).*|\\[(?<subsystem>[0-9a-zA-Z]+)\\] (?<ussinceboot>\\d+)us: \\[(?<state>[0-9a-zA-Z.]+)\\] (?<body>.*))?$"
             }
         },
         "level-field" : "body",
@@ -15,6 +16,10 @@
             "error" : "(?:from on|down)"
         },
         "value" : {
+            "event" : {
+                "kind" : "string",
+                "identifier" : true
+            },
             "subsystem" : {
                 "kind" : "string",
                 "identifier" : true
@@ -23,14 +28,19 @@
                 "kind" : "integer",
                 "identifier" : false
             },
-	        "state" : {
-		        "kind" : "string",
-		        "identifier" : true
-	        }
+            "state" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "body" : {
+                "kind" : "string",
+                "identifier" : false,
+                "rewriter" : ":pipe-line-to test.pl"
+            }
         },
         "sample" : [
             {
-                "line" : "2014-06-14T06:15:25.752Z: [scsiCorrelator] 104959723901us: [vob.scsi.scsipath.pathstate.dead] scsiPath vmhba2:C0:T1:L13 changed state from on"    
+                "line" : "2014-06-14T06:15:25.752Z: [scsiCorrelator] 104959723901us: [vob.scsi.scsipath.pathstate.dead] scsiPath vmhba2:C0:T1:L13 changed state from on"
             }
         ]
     }
