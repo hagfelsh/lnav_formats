@@ -5,7 +5,7 @@
         "url" : "",
         "regex" : {
             "std" : {
-                "pattern" : "^(?<timestamp>\\w{3}\\s+\\d{1,2} \\d{2}:\\d{2}:\\d{2}) \\[(?<pid>\\d+)\\] (?<hostname>\\S+)\\s+(?<procname>\\S+):\\s+(?<level>\\w+):\\s+((?<function>\\S+):)?\\s+(?<body>.*)$"
+                "pattern" : "^(?:(?<timestamp>\\w{3} \\d+ \\d{2}:\\d{2}:\\d{2}) \\[(?<pid>\\d+)\\] (?<hostname>\\S+)\\s+(?<subsystem>[\\-\\w]+):\\s+(?<level>\\w+):\\s+(?<body>.*)|(?<resourceSub>\\w+)\\((?<resourcetype>\\S+)\\)\\[(?<resourceSubPID>\\d+)\\]:\\s+(?<timestamp2>\\d{4}\\/\\d{2}\\/\\d{2}_\\d{2}:\\d{2}:\\d{2}) (?<level2>\\w+):\\s+(?<body2>.*))$"
             }
         },
         "level-field" : "level",
@@ -23,6 +23,10 @@
                 "identifier" : true
             },
             "function" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "resourceSubPID" : {
                 "kind" : "string",
                 "identifier" : true
             }
