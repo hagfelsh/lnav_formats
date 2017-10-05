@@ -1,0 +1,45 @@
+{
+    "syslog_offset" : {
+        "title" : "Syslog",
+        "description" : "The system logger format with an offset included",
+        "url" : "http://en.wikipedia.org/wiki/Syslog",
+        "regex" : {
+            "std" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?)[\\+\\-]\\d{2}:\\d{2}\\s+(?:(?<log_hostname>[a-zA-Z0-9:][^ ]+[a-zA-Z0-9]))?(?:(?: (?<log_procname>(?:[^\\[:]+|[^:]+))(?:\\[(?<log_pid>\\d+)])?:(?<body>(?:.|\\n)*))$|:?(?:(?: ---)? last message repeated \\d+ times?(?: ---)?))"
+            }
+        },
+        "level-field" : "body",
+        "level" : {
+            "error" : "(?:failed|failure|error)",
+            "warning" : "(?:warn|not responding|init: cannot execute)"
+        },
+        "value" : {
+            "log_hostname" : {
+                "kind" : "string",
+                "collate" : "ipaddress",
+                "identifier" : true
+            },
+            "log_procname" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "log_pid" : {
+                "kind" : "string",
+                "identifier" : true,
+                "action-list" : ["dump_pid"]
+            }
+        },
+        "action" : {
+            "dump_pid" : {
+                "label" : "Show Process Info",
+                "capture-output" : true,
+                "cmd" : ["dump-pid.sh"]
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2015-09-29T12:30:01-05:00 FS03 CROND[28530]: (root) CMD (/usr/lib64/sa/sa1 1 1)"
+            }
+        ]
+    }
+}
