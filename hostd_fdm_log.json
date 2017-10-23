@@ -5,13 +5,10 @@
         "url" : "",
         "regex" : {
             "std" : {
-                        "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) \\[(?<threaduid>[0-9A-F]+) (?<level>\\w+) \\'(?<processname>.+)(.+)?\\'\\](?<body>.*)$"
+            "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) \\[(?<threaduid>[0-9A-F]+) (?<level>\\w+) \\'(?<processname>.+)(.+)?\\'( opID=(?<opid>\\S+))?( user=(?<user>\\S+))?\\](?<body>.*)$"
             },
-            "6.0" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>[\\-\\w]+)\\[(?<threaduid>[A-F0-9]+)\\] \\[Originator@(?<originid>\\d+) (?:sub=(?<subsystem>[\\w\\d\\-\\.\\_\\(\\)]+)?|sub=(?<vmsub>[\\w\\d\\-\\.\\:]+)(?:(?<errmsg>.*)?(?<vmxpath>\\/vmfs\\/volumes\\/\\S+\\.vmx)| \\((?<migrationid>\\d+)\\))?)( opID=(?<opid>\\S+) user=(?<user>\\S+))?\\](\\s+)?(?<body>.*)$"
-            },
-            "fdm" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+)(\\s+)?(?:opID=(?<opid>[A-Za-z0-9@\\-]+))?( user=(?<username>\\S+))?\\] (?:\\[(?<function>\\w+)::(?<method>\\w+)\\])?(?<body>.*)$"
+            "allin1wvmx" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>(.*(?<vmxpath>\\/vmfs\\/volumes\\/.*\\.vmx)|\\S+))(\\s+)?(?:opID=(?<opid>[A-Za-z0-9@\\-\\:]+))?( user=(?<username>\\S+))?\\] (?:\\[(?<function>\\w+)::(?<method>\\w+)\\])?(?<body>.*)$"
             }
         },
         "level-field" : "level",
@@ -68,6 +65,10 @@
                 "identifier" : true
             },
             "migrationid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "processid" : {
                 "kind" : "string",
                 "identifier" : true
             }
