@@ -1,0 +1,42 @@
+{
+    "hostd_probe" : {
+        "title" : "vmware hostd-probe",
+        "description" : "vmware's hostd-prove log format",
+        "url" : "",
+        "regex" : {
+            "std" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>[\\-\\w]+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+)\\] (?<body>.*)$"
+            }
+        },
+        "level-field" : "level",
+        "level" : {
+            "warning" : "warning",
+            "error" : "error",
+            "info" : "info",
+            "debug" : "verbose"
+        },
+        "value" : {
+            "processname": {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "originatorid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "subsystem" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "processid" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2017-09-19T08:15:01.499Z info hostd-probe[FFB08330] [Originator@6876 sub=Default] The bora/lib logs WILL be handled by VmaCore"
+            }
+        ]
+    }
+}
