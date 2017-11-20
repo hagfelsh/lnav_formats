@@ -1,0 +1,37 @@
+{
+    "ceph_mon_log" : {
+        "title" : "Ceph Monitor Log",
+        "description" : "Log format for ceph storage monitors",
+        "url" : "http://ceph.com",
+        "regex" : {
+            "basic" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{6}) (?<threadid>[a-f\\d]+)\\s+(?<importantlookingnumber>\\d+) (?<reportingprocess>\\S+)(:)? (?<body>.*)$"
+            }
+        },
+        "level-field" : "body",
+        "level" : {
+            "info" : "INF",
+            "error" : "ERR",
+            "warning" : "WRN"
+        },
+        "value" : {
+            "threadid" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "importantlookingnumber" : {
+                "kind" : "integer",
+                "identifier" : true
+            },
+            "reportingprocess" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample" : [
+            {
+                "line" : "2017-11-20 11:25:47.722041 7f7377ca3700  0 log_channel(cluster) log [INF] : Cluster is now healthy"
+            }
+        ]
+    }
+}
