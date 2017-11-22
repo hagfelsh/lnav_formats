@@ -1,11 +1,11 @@
 {
     "hostd_probe" : {
         "title" : "vmware hostd-probe",
-        "description" : "vmware's hostd-prove log format",
+        "description" : "vmware's hostd-probe log format",
         "url" : "",
         "regex" : {
             "std" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>[\\-\\w]+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+)\\] (?<body>.*)$"
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>[\\-\\w]+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>\\S+)( opID=(?<opid>\\S+))?\\] (?<body>.*)$"
             }
         },
         "level-field" : "level",
@@ -15,6 +15,7 @@
             "info" : "info",
             "debug" : "verbose"
         },
+        "opid-field" : "opid",
         "value" : {
             "processname": {
                 "kind" : "string",
