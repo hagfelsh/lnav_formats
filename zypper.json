@@ -5,7 +5,7 @@
         "url": "",
         "regex": {
             "std": {
-        "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) <\\d> (?<hostname>\\S+)\\((?<pid>\\d+)\\) \\[(?<process>[\\:\\+\\-\\.\\w\\d]+)\\] (?<sourcefile>\\w+\\.cc)\\((?<method>\\S+)\\)\\:(?<line>\\d+) (\\- )?(?<body>.*)$"
+        "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) <\\d> (?<hostname>\\S+)\\((?<pid>\\d+)\\) \\[(?<process>[\\:\\+\\-\\.\\w\\d]+)\\] (?<sourcefile>[\\-\\w]+\\.\\w+)\\((?<method>\\S+)\\)\\:(?<line>\\d+) (\\- )?(?<body>.*)$"
             }
         },
         "level-field": "body",
