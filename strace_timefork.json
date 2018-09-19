@@ -12,6 +12,7 @@
         "level" : {
             "error" : ".+"
         },
+        "opid-field" : "pid",
         "value" : {
             "pid" : {
                 "kind" : "integer",
