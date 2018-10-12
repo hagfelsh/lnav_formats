@@ -8,7 +8,7 @@
             "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) \\[(?<threaduid>[0-9A-F]+) (?<level>\\w+) \\'(?<processname>.+)(.+)?\\'( opID=(?<opid>\\S+))?( user=(?<user>\\S+))?\\](?<body>.*)$"
             },
             "allin1wvmx" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>\\w+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>(.*(?<vmxpath>\\/vmfs\\/volumes\\/.*\\.vmx)|\\S+))(\\s+)?(?:opID=(?<opid>[A-Za-z0-9@\\-\\:]+))?( user=(?<username>\\S+))?\\] (?:\\[(?<function>\\w+)::(?<method>\\w+)\\])?(?<body>.*)$"
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z) (?<level>\\w+) (?<processname>[-\\w]+)\\[(?<processid>[A-F0-9]+)\\] \\[(?<originatorid>[\\w\\d@]+) sub=(?<subsystem>(.*(?<vmxpath>\\/vmfs\\/volumes\\/.*\\.vmx)|\\S+))(\\s+)?(?:opID=(?<opid>[A-Za-z0-9@\\-\\:]+))?( user=(?<username>\\S+))?\\] (?:\\[(?<function>\\w+)::(?<method>\\w+)\\])?(?<body>.*)$"
             }
         },
         "level-field" : "level",
