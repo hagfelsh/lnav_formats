@@ -1,0 +1,18 @@
+{
+    "vum_refreshCerts" : {
+        "title": "Vmware Update Manager Certificate Refresh Log",
+        "description": "VMware Update Manager Certificate Refresh Log file",
+        "url": "",
+        "regex": {
+            "std": {
+                "pattern" : "\\[(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) (?<level>\\w+)\\] (?<body>.*)$"
+            }
+        },
+        "level-field": "level",
+        "sample": [
+            {
+                "line": "[2018-11-16 22:46:15,000 INFO] Creating/Updating key file: /usr/lib/vmware-updatemgr/bin/ssl/rui.key"
+            }
+        ]
+    }
+}
