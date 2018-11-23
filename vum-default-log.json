@@ -1,0 +1,32 @@
+{
+    "vum_defaultLog" : {
+        "title": "Vmware Update Manager Default Log",
+        "description": "VMware Update Manager Default Log file",
+        "url": "",
+        "regex": {
+            "std": {
+                "pattern" : "(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z) (?:Section for VMware Update Manager, pid=\\d+, version=\\S+, build=\\d+, option=\\w+|(?<level>\\w+) (?<procname>[\\w\\-\\_]+)\\[(?<pid>\\d+)\\] \\[Originator@\\d+ sub=(?<sub>\\S+)\\]\\s+(?<body>.*))$"
+            }
+        },
+        "value" : {
+            "procnae" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "pid" : {
+                "kind" : "integer",
+                "identifier" : true
+            },
+            "sub" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "level-field": "level",
+        "sample": [
+            {
+                "line": "2018-11-16T22:46:17.891Z info vmware-vum-server[14539] [Originator@6876 sub=Locale] Added locale path ./vclocale/ to locale map"
+            }
+        ]
+    }
+}
