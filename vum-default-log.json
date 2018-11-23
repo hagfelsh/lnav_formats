@@ -1,7 +1,7 @@
 {
     "vum_defaultLog" : {
         "title": "Vmware Update Manager Default Log",
-        "description": "VMware Update Manager Default Log file",
+        "description": "VMware Update Manager Default Log file--converting file with dos2unix might be needed for this logfile",
         "url": "",
         "regex": {
             "std": {
