@@ -1,0 +1,45 @@
+{
+
+    "vum_log4cpp" : {
+        "title": "Vmware Update Manager log4cpp",
+        "description": "VMware Update Manager main log file",
+        "url": "",
+        "regex": {
+            "std": {
+                "pattern" : "\\[(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}:\\d{3}) '(?:(?<processname>\\w+)|(?<parentproc>\\w+)\\.(?<procaction>\\w+\\{\\d+}))' \\d+ (?<level>\\w+)\\]\\s+\\[(?<procname2>\\w+), (?<meaningfulNumber>\\d+)\\]\\s+(?<body>.*)$"
+            }
+        },
+        "level-field": "level",
+        "value": {
+            "processname" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "parentproc" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "procaction" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "procname" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "procname2" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "meaningfulNumber" : {
+                "kind" : "integer",
+                "identifier" : false
+            }
+        },
+        "sample": [
+            {
+                "line": "[2018-11-22 21:58:28:670 'InternalScheduledTasksMgr' 140133146265344 INFO]  [internalScheduledTasksMgr, 354] Snapshot aging periodic task started, Total number of  snapshots to be deleted in this run: 0"
+            }
+        ]
+    }
+}
