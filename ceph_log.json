@@ -6,6 +6,9 @@
         "regex" : {
             "basic" : {
                 "pattern" : "(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{6}) (?<nodeclass>\\w+)\\.(?<nodename>\\S+) (?<actorclass>\\w+)\\.(?<actorname>\\d+) (?<nodeip>\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}):(?<nodesocket>\\d+)\\/\\d+ \\d+\\s+:\\s+(?<scope>\\S+) \\[(?<level>\\w+)\\] (?<body>.*)$"
+            },
+            "nautilus" : {
+                "pattern" : "(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{6}) (?<nodeclass>\\w+)\\.(?<nodename>\\S+) \\((?<actorclass>\\w+)\\.(?<actorname>\\d+)\\) \\d+\\s+:\\s+(?<scope>\\S+) \\[(?<level>\\w+)\\] (?<body>.*)$"
             }
         },
         "level-field" : "level",
