@@ -1,0 +1,69 @@
+{
+    "proftpd_xferlog" : {
+        "title": "proftpd xferlog",
+        "description": "The xferlog file contains logging information from the FTP server daemon, proftpd(8).",
+        "url": "http://www.castaglia.org/proftpd/doc/xferlog.html",
+        "regex": {
+            "std": {
+                /* # current-time   transfer-time   remote-host   file-size   filename   transfer-type   special-action-flag   direction   access-mode   username   service-name   authentication-method   authenticated-user-id  completion-status */
+                "pattern" : "^(?<timestamp>\\w{3} \\w{3} \\d+ \\d+:\\d+:\\d+ \\d+) (?<transfer_time>\\d+) (?<remote_host>[:a-f\\d\\.]+) (?<file_size>\\d+) (?<file_name>\\S+) (?<transfer_type>[ab]) (?<special_action_flag>[CUT\\_]) (?<direction>[oid]) (?<access_mode>[agr]) (?<username>[\\d\\w@\\.]+) (?<service_name>\\w+) (?<auth_method>[01]) (?<authenticated_user_id>\\S+) (?<completion_status>[ci])$"
+            }
+        },
+        "level-field": "level",
+        "value" : {
+                "transfer_time" : {
+                        "kind" : "string",
+                        "identifier" : false
+                },
+                "remote_host" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "file_size" : {
+                        "kind" : "integer",
+                        "identifier" : false
+                },
+                "transfer_type" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "special_action_flag" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "direction" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "access_mode" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "username" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "service_name" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "auth_method" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "authenticated_user_id" : {
+                        "kind" : "string",
+                        "identifier" : true
+                },
+                "completion_status" : {
+                        "kind" : "string",
+                        "identifier" : true
+                }
+        },
+        "sample": [
+            {
+                "line": "Fri Jun 21 11:25:46 2019 1 ::ffff:192.168.100.2 3734 /pub/repodata/repomd.xml b _ o a ftp@example.com ftp 0 * c"
+            }
+        ]
+    }
+}
