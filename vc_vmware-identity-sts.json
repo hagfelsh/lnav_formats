@@ -1,0 +1,36 @@
+{
+    "vc_vmware_identity_sts" : {
+        "title": "Vmware vCenter Identity STS Log",
+        "description": "Vmware vCenter Identity STS Log",
+        "url": "",
+        "regex": {
+            "std": {
+                "pattern" : "^\\[(?<timestamp>\\d{4}\\-\\d{2}\\-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}(?:Z|\\-\\d{2}:\\d{2})) (?<reporter>[\\d\\-\\w]+) (?<hostname>[\\w\\.]+)\\s+(?<uuid>[a-f\\d\\-]+) (?<level>\\w+)(\\s+)?(?<thingdoer>[\\w\\.]+)\\] (?<body>.*)$"
+            }
+        },
+        "level-field": "level",
+        "value" : {
+            "reporter" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "thingdoer" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "hostname" : {
+                "kind" : "string",
+                "identifier" : true
+            },
+            "uuid" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample": [
+            {
+                "line": "[2019-07-25T11:58:50.959-05:00 tomcat-http--39 vsphere.local        4c2a4fa3-c754-45c9-909a-702a39bca7aa INFO  com.vmware.identity.saml.impl.AuthnOnlyTokenValidator] Token _8d55cc0b-534e-4038-9ddc-9ce7db467371 validated with SubjectValidation Regular."
+            }
+        ]
+    }
+}
