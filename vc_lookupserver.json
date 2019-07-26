@@ -1,0 +1,24 @@
+{
+    "vc_lookupServer" : {
+        "title": "Vmware vCenter LookupServer Log",
+        "description": "Vmware vCenter LookupServer Log",
+        "url": "",
+        "regex": {
+            "std": {
+                "pattern" : "^\\[(?<level>\\w+(\\s+)?)\\]\\[(?<timestamp>\\d{4}\\-\\d{2}\\-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z)\\]\\[\\]\\s+(?<reporter>\\w+) \\- (?<body>.*)$"
+            }
+        },
+        "level-field": "level",
+        "value" : {
+            "reporter" : {
+                "kind" : "string",
+                "identifier" : true
+            }
+        },
+        "sample": [
+            {
+                "line": "[WARN ][2019-01-11T16:19:02.439Z][] LdapErrorChecker - Error received by LDAP client: com.vmware.identity.interop.ldap.OpenLdapClientLibrary, error code: 32"
+            }
+        ]
+    }
+}
