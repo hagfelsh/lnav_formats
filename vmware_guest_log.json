@@ -5,8 +5,11 @@
         "url" : "",
         "regex" : {
             "std" : {
-                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z)\\|\\s+(?<processname>[0-9a-zA-Z\\-\\#]+)\\|\\s+(?<level>\\w{1})(?<errornumber>\\d+)[+:]\\s+(?:(?<object>\\S+):\\s+|(?<body>.*))$"
-             }
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{3})?Z)(\\[\\+\\d+\\.\\d+\\])?\\|\\s+(?<processname>[0-9a-zA-Z\\-\\#]+)(\\s+)?\\|\\s+(?<level>\\w{1})(?<errornumber>\\d+)[+:]\\s+((?<reporter>[\\w\\d\\s\\-\\_]+)(\\s+)?:)?(?<body>.*)$"
+             },
+            "v70" : {
+                "pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z)\\|\\s*(?<processname>[\\w\\-]+)\\s*\\|\\s*\\|\\s+(?<level>\\w{1})(?<errornumber>\\d+)[+:]\\s+((?<reporter>[\\w\\d\\s\\-\\_]+)(\\s+)?:)?(?<body>.*)$"
+            }
         },
         "level-field" : "level",
         "level" : { "warning" : "(?:W|A)", "error" : "E" },
@@ -19,17 +22,28 @@
                 "kind" : "integer",
                 "identifier" : true
             },
+            "reporter" : {
+                "kind" : "string",
+                "identifier" : true
+            },
             "object" : {
                 "kind" : "string",
                 "identifier" : true
+            },
+            "vcpu" : {
+                "kind" : "string",
+                "identifier" : true
             }
-        },        
+        },
         "sample" : [
             {
                 "line" : "2015-05-15T23:30:38.045Z| vmx| I120: VLANCE: send cluster threshold is 80, size = 2 recalcInterval is 2 ticks"
             },
             {
                 "line" : "2015-05-15T23:30:49.873Z| vcpu-0| I120: SVGA enabling SVGA"
+            },
+            {
+                "line" : "2021-08-27T12:41:03.875Z| vcpu-1| | I005: SVGA: Unregistering MemSpace at 0xe8000000(0xe8000000) and 0xfe000000(0xfe000000)"
             }
         ]
     }
