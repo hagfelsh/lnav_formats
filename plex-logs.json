@@ -6,7 +6,7 @@
         "multiline" : false,
         "regex" : {
 		"basic" : {
-			"pattern" : "^(?<timestamp>\\w{3} \\d{2}, \\d{4} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}) \\[0x[a-f0-9]{8}\\] (?<level>\\w+) - (?<body>.*)$"
+			"pattern" : "^(?<timestamp>\\w{3} \\d{2}, \\d{4} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}) \\[[a-f0-9]{15}\\] (?<level>\\w+) - (?<body>.*)$"
 		}
         },
 	"timestamp-format" : [
@@ -21,15 +21,15 @@
             },
         "sample" : [
             {
-                "line" : "Sep 02, 2020 01:22:04.806 [0xb3de3440] INFO - Plex Media Server v1.20.1.3252-a78fef9a9 - Ubuntu PC armv7l - build: linux-armv7hf_neon debian - GMT -04:00",
+                "line" : "Jun 17, 2023 22:42:27.355 [140101640850232] DEBUG - [Lyrics] PromiseQueue: promise resolved (queued: 0, active: 1)",
+                "level" : "debug"
+            },
+            {
+                "line" : "Jun 17, 2023 22:43:59.288 [140101784881976] INFO - Plex Media Server v1.32.3.7192-7aa441827 - Ubuntu PC armv71 - build: linux-arm7hf_neon debian - GMT 03:00",
                 "level" : "info"
             },
             {
-                "line" : "Sep 02, 2020 01:22:04.806 [0xb3de3440] INFO - Plex Media Server v1.20.1.3252-a78fef9a9 - Ubuntu PC armv7l - build: linux-armv7hf_neon debian - GMT -04:00",
-                "level" : "info"
-            },
-            {
-                "line" : "Sep 02, 2020 01:22:18.502 [0xae5fe440] ERROR - Error issuing curl_easy_perform(handle): 60",
+                "line" : "Jun 17, 2023 22:44:03.450 [140101634362168] ERROR - [Req#6925c] Unable to find client profile for device;platform=webOS, platformVersion=7.3.0, device=webOS 7.3.0, model=funnyclient",
 		"level" : "error"
             }
         ]
